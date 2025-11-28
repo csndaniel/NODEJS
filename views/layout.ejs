@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Solid State CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <header id="header" class="alt">
+        <h1><a href="/">Fiktív Cég</a></h1>
+        <nav>
+          <a href="#menu">Menü</a>
+        </nav>
+      </header>
+
+      <!-- Menü -->
+      <nav id="menu">
+        <div class="inner">
+          <h2>Menü</h2>
+          <ul class="links">
+            <li><a href="/">Főoldal</a></li>
+            <li><a href="/adatbazis/pilotak">Pilóták</a></li>
+            <li><a href="/adatbazis/palyak">Pályák</a></li>
+            <li><a href="/adatbazis/versenyek">Versenyek</a></li>
+            <li><a href="/kapcsolat">Kapcsolat</a></li>
+            <li><a href="/crud/pilotak">CRUD</a></li>
+
+            <% if (!user) { %>
+              <li><a href="/auth/login">Bejelentkezés</a></li>
+              <li><a href="/auth/register">Regisztráció</a></li>
+            <% } else { %>
+              <li><a href="/auth/logout">Kijelentkezés</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Tartalom -->
+      <section id="wrapper">
+        <div class="inner">
+          <%- body %>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <section id="footer">
+        <div class="inner">
+          <ul class="menu">
+            <li>&copy; Fiktív Cég. Minden jog fenntartva.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+  </body>
+</html>

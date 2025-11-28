@@ -1,0 +1,26 @@
+<%- include('../layout', {
+  title: 'Pilóta szerkesztése',
+  body: `
+    <h2>Pilóta szerkesztése</h2>
+
+    <form action="/crud/pilotak/szerkesztes/${pilota.id}" method="POST">
+
+        <label>Név</label>
+        <input type="text" name="nev" value="${pilota.nev}" required>
+
+        <label>Születési idő</label>
+        <input type="date" name="szuletesi_ido" value="${pilota.szuletesi_ido.toISOString().split('T')[0]}" required>
+
+        <label>Futamgyőzelmek</label>
+        <input type="number" name="futamgyozelmek" value="${pilota.futamgyozelmek}" required>
+
+        <label>Pontszám</label>
+        <input type="number" name="pontszam" value="${pilota.pontszam}" required>
+
+        <label>Pole pozíciók</label>
+        <input type="number" name="pole_poziciok" value="${pilota.pole_poziciok}" required>
+
+        <button type="submit">Módosítás</button>
+    </form>
+  `
+}) %>

@@ -1,0 +1,23 @@
+<%- include('../layout', {
+  title: 'Pályák',
+  body: `
+    <h2>Pályák listája</h2>
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Ország</th>
+        <th>Pálya neve</th>
+        <th>Hossz (km)</th>
+        <th>Első verseny</th>
+      </tr>
+
+      ${palyak.map(p => `
+        <tr>
+          <td>${p.orszag}</td>
+          <td>${p.palya_neve}</td>
+          <td>${p.hossz_km}</td>
+          <td>${p.elso_verseny.toISOString().split('T')[0]}</td>
+        </tr>
+      `).join('')}
+    </table>
+  `
+}) %>

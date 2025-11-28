@@ -1,0 +1,19 @@
+<%- include('../layout', {
+  title: 'Regisztráció',
+  body: `
+    <h2>Regisztráció</h2>
+    
+    <form action="/auth/register" method="POST" class="form">
+        <label>Felhasználónév</label>
+        <input type="text" name="username" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Jelszó</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Regisztráció</button>
+    </form>
+  `
+}) %>

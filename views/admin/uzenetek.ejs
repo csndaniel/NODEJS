@@ -1,0 +1,24 @@
+<%- include('../layout', {
+  title: 'Üzenetek',
+  body: `
+    <h2>Beérkezett üzenetek</h2>
+
+    <table border="1" cellpadding="10">
+      <tr>
+        <th>Név</th>
+        <th>Email</th>
+        <th>Üzenet</th>
+        <th>Dátum</th>
+      </tr>
+
+      ${uzenetek.map(u => `
+        <tr>
+          <td>${u.nev}</td>
+          <td>${u.email}</td>
+          <td>${u.uzenet}</td>
+          <td>${u.datum.toLocaleString()}</td>
+        </tr>
+      `).join('')}
+    </table>
+  `
+}) %>
