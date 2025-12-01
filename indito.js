@@ -5,7 +5,7 @@ const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
-const BASE_PATH = process.env.BASE_PATH || '';
+const BASE_PATH = '/app006';
 const app = express();
 
 // View engine beállítás (EJS)
@@ -14,6 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Statikus fájlok (reszponzív téma – Solid State)
 app.use(BASE_PATH, express.static(path.join(__dirname, 'public')));
+
 
 
 // POST adatok feldolgozása
@@ -60,11 +61,14 @@ app.use(BASE_PATH + '/admin', adminRoutes);
 app.use(BASE_PATH + '/crud/pilotak', pilotakRoutes);
 
 
+
 // Port beállítása
-const PORT = process.env.PORT || 4006;
+const PORT = 4006;
+
 app.listen(PORT, () => {
   console.log(`Szerver fut: http://localhost:${PORT}`);
 });
+
 
 
 const adminRegister = require('./routes/adminRegister');
