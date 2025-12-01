@@ -1,16 +1,18 @@
-<%- include('../layout', {
-  title: 'Bejelentkezés',
-  body: `
-    <h2>Bejelentkezés</h2>
+<%- include('../layout', { 
+    title: 'Bejelentkezés',
+    body: `
+        <div class="auth-container">
+            <h2>Bejelentkezés</h2>
 
-    <form action="/auth/login" method="POST" class="form">
-        <label>Email</label>
-        <input type="email" name="email" required>
+            <form action="/auth/login" method="POST">
+                <label>Email</label>
+                <input type="email" name="email" required>
 
-        <label>Jelszó</label>
-        <input type="password" name="password" required>
+                <label>Jelszó</label>
+                <input type="password" name="password" required>
 
-        <button type="submit">Bejelentkezés</button>
-    </form>
-  `
+                <button type="submit">Bejelentkezés</button>
+            </form>
+        </div>
+    `
 }) %>

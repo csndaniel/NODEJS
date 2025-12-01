@@ -57,39 +57,62 @@ module.exports = {
     // --------------------
     // LOGIN POST
     // --------------------
+
     postLogin: (req, res) => {
-        const { email, password } = req.body;
+        // Ezek BIZTOSAN működni fognak
+        const email = req.body.email;
+        const password = req.body.password;
+
+        console.log("=== LOGIN ROUTE FUT ===");
+        console.log("Email:", email);
 
         db.query(
             "SELECT * FROM users WHERE email = ?",
             [email],
             (err, results) => {
-                if (err) throw err;
 
+                if (err) {
+                    console.log("DB error:", err);
+                    throw err;
+                }
+
+                console.log("DB eredmény:", results);
+
+                // Ha nincs ilyen felhasználó
                 if (results.length === 0) {
+                    console.log("NINCS ilyen user!");
                     req.flash('error_msg', 'Hibás email vagy jelszó.');
                     return res.redirect('/auth/login');
                 }
 
                 const user = results[0];
 
-                if (!bcrypt.compareSync(password, user.password)) {
+                // Jelszó ellenőrzés
+                const isMatch = bcrypt.compareSync(password, user.password);
+                console.log("Password match:", isMatch);
+
+                if (!isMatch) {
+                    console.log("ROSSZ jelszó!");
                     req.flash('error_msg', 'Hibás email vagy jelszó.');
                     return res.redirect('/auth/login');
                 }
 
+                // Ha minden OK → session létrehozása
                 req.session.user = {
                     id: user.id,
                     username: user.username,
-                    role: user.role,
-                    email: user.email
+                    email: user.email,
+                    role: user.role
                 };
 
-                req.flash('success_msg', `Szia ${user.username}, sikeresen bejelentkeztél!`);
+                console.log("Sikeres bejelentkezés:", req.session.user);
+
+                req.flash('success_msg', 'Sikeres bejelentkezés!');
                 res.redirect('/');
             }
         );
     },
+
 
     // --------------------
     // LOGOUT

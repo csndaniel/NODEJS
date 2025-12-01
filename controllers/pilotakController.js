@@ -2,7 +2,6 @@ const db = require('../config/db');
 
 module.exports = {
 
-    // LISTÁZÁS
     list: (req, res) => {
         db.query("SELECT * FROM pilotak", (err, results) => {
             if (err) throw err;
@@ -13,12 +12,10 @@ module.exports = {
         });
     },
 
-    // ÚJ PILÓTA FORM
     newForm: (req, res) => {
         res.render('pilotak/new', { title: 'Új pilóta' });
     },
 
-    // ÚJ PILÓTA FELVÉTELE
     create: (req, res) => {
         const { nev, szuletesi_ido, futamgyozelmek, pontszam, pole_poziciok } = req.body;
 
@@ -34,12 +31,16 @@ module.exports = {
         );
     },
 
-    // SZERKESZTŐ FORM
     editForm: (req, res) => {
         const id = req.params.id;
 
         db.query("SELECT * FROM pilotak WHERE id = ?", [id], (err, results) => {
             if (err) throw err;
+
+            if (results.length === 0) {
+                req.flash('error_msg', 'A pilóta nem található.');
+                return res.redirect('/crud/pilotak');
+            }
 
             res.render('pilotak/edit', {
                 title: 'Pilóta szerkesztése',
@@ -48,7 +49,6 @@ module.exports = {
         });
     },
 
-    // SZERKESZTÉS (UPDATE)
     update: (req, res) => {
         const id = req.params.id;
         const { nev, szuletesi_ido, futamgyozelmek, pontszam, pole_poziciok } = req.body;
@@ -59,13 +59,12 @@ module.exports = {
             (err) => {
                 if (err) throw err;
 
-                req.flash('success_msg', 'Pilóta sikeresen módosítva!');
+                req.flash('success_msg', 'Pilóta módosítva!');
                 res.redirect('/crud/pilotak');
             }
         );
     },
 
-    // TÖRLÉS
     delete: (req, res) => {
         const id = req.params.id;
 

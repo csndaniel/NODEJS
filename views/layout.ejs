@@ -1,73 +1,86 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title><%= title %></title>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="<%= basePath %>/assets/css/main.css" />
+    <link rel="stylesheet" href="<%= basePath %>/css/custom.css" />
+    <noscript>
+        <link rel="stylesheet" href="<%= basePath %>/assets/css/noscript.css" />
+    </noscript>
 
-    <!-- Solid State CSS -->
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-  </head>
-  <body class="is-preload">
+</head>
 
-    <!-- Wrapper -->
+<body class="is-preload">
     <div id="page-wrapper">
 
-      <!-- Header -->
-      <header id="header" class="alt">
-        <h1><a href="/">Fiktív Cég</a></h1>
-        <nav>
-          <a href="#menu">Menü</a>
-        </nav>
-      </header>
+        <!-- FIX TOP NAVBAR -->
+        <header id="header" class="header-fixed">
+            <div class="inner nav-container">
 
-      <!-- Menü -->
-      <nav id="menu">
-        <div class="inner">
-          <h2>Menü</h2>
-          <ul class="links">
-            <li><a href="/">Főoldal</a></li>
-            <li><a href="/adatbazis/pilotak">Pilóták</a></li>
-            <li><a href="/adatbazis/palyak">Pályák</a></li>
-            <li><a href="/adatbazis/versenyek">Versenyek</a></li>
-            <li><a href="/kapcsolat">Kapcsolat</a></li>
-            <li><a href="/crud/pilotak">CRUD</a></li>
+                <!-- BAL OLDALI MENÜ -->
+                <div class="navbar-left">
+                    <a class="<%= title === 'Főoldal' ? 'active' : '' %>" href="<%= basePath %>/">Főoldal</a>
+                    <a class="<%= title === 'Pilóták' ? 'active' : '' %>"
+                        href="<%= basePath %>/adatbazis/pilotak">Pilóták</a>
+                    <a class="<%= title === 'Pályák' ? 'active' : '' %>"
+                        href="<%= basePath %>/adatbazis/palyak">Pályák</a>
+                    <a class="<%= title === 'Versenyek' ? 'active' : '' %>"
+                        href="<%= basePath %>/adatbazis/versenyek">Versenyek</a>
+                    <a class="<%= title === 'Kapcsolat' ? 'active' : '' %>"
+                        href="<%= basePath %>/kapcsolat">Kapcsolat</a>
 
-            <% if (!user) { %>
-              <li><a href="/auth/login">Bejelentkezés</a></li>
-              <li><a href="/auth/register">Regisztráció</a></li>
-            <% } else { %>
-              <li><a href="/auth/logout">Kijelentkezés</a></li>
-            <% } %>
-          </ul>
-        </div>
-      </nav>
+                    <% if (user && user.role==='admin' ) { %>
+                        <a class="<%= title.includes('CRUD') ? 'active' : '' %>"
+                            href="<%= basePath %>/crud/pilotak">CRUD</a>
+                        <a class="<%= title.includes('Üzenetek') ? 'active' : '' %>"
+                            href="<%= basePath %>/admin/uzenetek">Üzenetek</a>
+                        <% } %>
+                </div>
 
-      <!-- Tartalom -->
-      <section id="wrapper">
-        <div class="inner">
-          <%- body %>
-        </div>
-      </section>
+                <!-- JOBB OLDALI USER MENÜ -->
+                <div class="navbar-right">
+                    <% if (user) { %>
+                        <span class="user-text">👤 <%= user.username %></span>
+                        <a class="button small" href="<%= basePath %>/auth/logout">Kijelentkezés</a>
+                        <% } else { %>
+                            <a class="button small" href="<%= basePath %>/auth/login">Bejelentkezés</a>
+                            <a class="button small primary" href="<%= basePath %>/auth/register">Regisztráció</a>
+                            <% } %>
+                </div>
 
-      <!-- Footer -->
-      <section id="footer">
-        <div class="inner">
-          <ul class="menu">
-            <li>&copy; Fiktív Cég. Minden jog fenntartva.</li>
-          </ul>
-        </div>
-      </section>
+            </div>
+        </header>
+
+        <!-- TARTALOM -->
+        <section id="wrapper" style="padding-top: 120px;">
+            <div class="inner">
+                <%- body %>
+            </div>
+        </section>
+
+        <!-- LÁBLÉC -->
+        <section id="footer">
+            <div class="inner">
+                <ul class="menu">
+                    <li>&copy; Cs. Nagy Dániel - Rafai Roland | Webprogramozás II.</li>
+                </ul>
+            </div>
+        </section>
 
     </div>
 
-    <!-- Scripts -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/browser.min.js"></script>
-    <script src="/assets/js/breakpoints.min.js"></script>
-    <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="<%= basePath %>/assets/js/jquery.min.js"></script>
+    <script src="<%= basePath %>/assets/js/browser.min.js"></script>
+    <script src="<%= basePath %>/assets/js/breakpoints.min.js"></script>
+    <script src="<%= basePath %>/assets/js/util.js"></script>
+    <script src="<%= basePath %>/assets/js/main.js"></script>
 
-  </body>
+
+</body>
+
 </html>

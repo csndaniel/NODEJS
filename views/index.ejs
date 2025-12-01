@@ -1,23 +1,43 @@
 <%- include('layout', {
   title: 'Főoldal',
   body: `
-    <header>
-      <div class="inner">
-        <h2>Üdvözlünk!</h2>
-        <p>Ezt az oldalt a Webprogramozás II. beadandóhoz készítettük.</p>
-      </div>
-    </header>
+    <div class="homepage-wrapper">
 
-    <section>
-      <h3>Mit találsz itt?</h3>
-      <p>
-        - Adatbázis oldalak (F1 pilóták, pályák, versenyek)<br>
-        - Kapcsolat űrlap üzenetküldéssel<br>
-        - Hitelesítés (login, regisztráció)<br>
-        - CRUD rendszer<br>
-        - Admin üzenetkezelés<br>
-        - Reszponzív dizájn (HTML5UP Solid State)
-      </p>
-    </section>
+      <div class="intro-box">
+        <h3>Bemutatkozás</h3>
+
+        <p>
+           Ezt a weboldalt a "Web-programozás II."" tantárgy labor óráira készítettük.
+           A témaválasztás egyszerű volt: szeretjük a technikai sportokat, különösen a Formula 1-et.
+           Mivel még tart a '25-ös szezon, így a 2024 eredményei találhatóak meg az oldalon, melyek egy adatbázisból kerültek lekérdezésre. 
+           Ezeket az adatokat az Admin felhasználónak van jogosultsága kezelni. (CRUD és Admin oldal összevonva)
+        </p>
+      </div>
+
+      <h2 class="section-title">Kedvenc, jelenleg aktív pilótáink...</h2>
+
+      <div class="gallery-row">
+
+        <div class="gallery-card">
+          <img src="<%= basePath %>/images/web_ea_kep1.jpg" alt="verstappen">
+          <div class="hover-text">"Send them my regards..."</div>
+          <div class="caption">Max Verstappen - 4-szeres világbajnok</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="<%= basePath %>/images/fernando-alonso-f1.png" alt="alonso">
+          <div class="hover-text">"No more radio for the rest of the race"</div>
+          <div class="caption">Fernando Alonso - 2-szeres világbajnok</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="<%= basePath %>/images/banan_leclerc.jpg" alt="leclerc">
+          <div class="hover-text">"I have my seat... Full of water! <br>"Must be the water... "</div>
+          <div class="caption">Charles Leclerc - 8-szoros futamgyőztes</div>
+        </div>
+
+      </div>
+
+    </div>
   `
 }) %>
