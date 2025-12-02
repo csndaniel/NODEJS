@@ -1,27 +1,25 @@
-<%- include('../layout', {
-  title: 'Versenyek',
-  body: `
-    <h2>2024-es versenyek</h2>
-    <table border="1" cellpadding="10">
-      <tr>
-        <th>Helyszín</th>
-        <th>Dátum</th>
-        <th>1. hely</th>
-        <th>2. hely</th>
-        <th>3. hely</th>
-        <th>Leggyorsabb kör</th>
-      </tr>
+<%- include('../layout', { title: 'Versenyek' }) %>
 
-      ${versenyek.map(v => `
-        <tr>
-          <td>${v.helyszin}</td>
-          <td>${v.datum.toISOString().split('T')[0]}</td>
-          <td>${v.elso_hely}</td>
-          <td>${v.masodik_hely}</td>
-          <td>${v.harmadik_hely}</td>
-          <td>${v.leggyorsabb_kor}</td>
-        </tr>
-      `).join('')}
-    </table>
-  `
-}) %>
+<h2>2024-es versenyek</h2>
+
+<table border="1" cellpadding="10">
+  <tr>
+    <th>Helyszín</th>
+    <th>Dátum</th>
+    <th>1. hely</th>
+    <th>2. hely</th>
+    <th>3. hely</th>
+    <th>Leggyorsabb kör</th>
+  </tr>
+
+  <% versenyek.forEach(v => { %>
+    <tr>
+      <td><%= v.helyszin %></td>
+      <td><%= v.datum ? v.datum.toString().slice(0, 10) : '' %></td>
+      <td><%= v.elso_hely %></td>
+      <td><%= v.masodik_hely %></td>
+      <td><%= v.harmadik_hely %></td>
+      <td><%= v.leggyorsabb_kor %></td>
+    </tr>
+  <% }) %>
+</table>

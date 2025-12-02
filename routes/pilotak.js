@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const pilotakController = require('../controllers/pilotakController');
-const { adminCheck } = require('../middleware/auth');
+const { adminCheck } = require('../middleware/auth'); // ← Ha nincs ilyen fájl, megírom
 
-// ADMIN jogosultság a teljes CRUD-ra
+// MINDEN CRUD művelethez admin jogosultság kell
 router.use(adminCheck);
 
 // Lista
@@ -17,7 +17,7 @@ router.post('/uj', pilotakController.create);
 router.get('/szerkesztes/:id', pilotakController.editForm);
 router.post('/szerkesztes/:id', pilotakController.update);
 
-// Törlés
-router.get('/torles/:id', pilotakController.delete);
+// Törlés – ajánlott DELETE metódussal
+router.delete('/torles/:id', pilotakController.delete);
 
 module.exports = router;

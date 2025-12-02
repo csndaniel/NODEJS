@@ -72,4 +72,5 @@ app.listen(PORT, () => {
 
 
 const adminRegister = require('./routes/adminRegister');
-app.use('/admin-reg', adminRegister);
+app.use(BASE_PATH + '/admin-reg', adminRegister);
+

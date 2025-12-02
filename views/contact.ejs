@@ -1,19 +1,18 @@
-<%- include('layout', {
-  title: 'Kapcsolat',
-  body: `
-    <h2>Kapcsolat</h2>
+<%- include('layout', { title: 'Kapcsolat' }) %>
 
-    <form action="/kapcsolat" method="POST" class="form">
-        <label>Név</label>
-        <input type="text" name="nev" required>
+<h2>Kapcsolat</h2>
 
-        <label>Email</label>
-        <input type="email" name="email" required>
+<form action="<%= basePath %>/kapcsolat" method="POST" class="form">
+    
+    <label>Név</label>
+    <input type="text" name="nev" required>
 
-        <label>Üzenet</label>
-        <textarea name="uzenet" rows="5" required></textarea>
+    <label>Email</label>
+    <input type="email" name="email" required>
 
-        <button type="submit">Küldés</button>
-    </form>
-  `
-}) %>
+    <label>Üzenet</label>
+    <textarea name="uzenet" rows="5" required></textarea>
+
+    <button type="submit">Küldés</button>
+
+</form>

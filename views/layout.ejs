@@ -1,18 +1,16 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
-    <title>
-        <%= title %>
-    </title>
+    <title><%= title %></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" href="<%= basePath %>/assets/css/main.css" />
     <link rel="stylesheet" href="<%= basePath %>/css/custom.css" />
+
     <noscript>
         <link rel="stylesheet" href="<%= basePath %>/assets/css/noscript.css" />
     </noscript>
-
 </head>
 
 <body class="is-preload">
@@ -22,35 +20,29 @@
         <header id="header" class="header-fixed">
             <div class="inner nav-container">
 
-                <!-- BAL OLDALI MENÜ -->
+                <!-- BAL OLDAL -->
                 <div class="navbar-left">
                     <a class="<%= title === 'Főoldal' ? 'active' : '' %>" href="<%= basePath %>/">Főoldal</a>
-                    <a class="<%= title === 'Pilóták' ? 'active' : '' %>"
-                        href="<%= basePath %>/adatbazis/pilotak">Pilóták</a>
-                    <a class="<%= title === 'Pályák' ? 'active' : '' %>"
-                        href="<%= basePath %>/adatbazis/palyak">Pályák</a>
-                    <a class="<%= title === 'Versenyek' ? 'active' : '' %>"
-                        href="<%= basePath %>/adatbazis/versenyek">Versenyek</a>
-                    <a class="<%= title === 'Kapcsolat' ? 'active' : '' %>"
-                        href="<%= basePath %>/kapcsolat">Kapcsolat</a>
+                    <a class="<%= title === 'Pilóták' ? 'active' : '' %>" href="<%= basePath %>/adatbazis/pilotak">Pilóták</a>
+                    <a class="<%= title === 'Pályák' ? 'active' : '' %>" href="<%= basePath %>/adatbazis/palyak">Pályák</a>
+                    <a class="<%= title === 'Versenyek' ? 'active' : '' %>" href="<%= basePath %>/adatbazis/versenyek">Versenyek</a>
+                    <a class="<%= title === 'Kapcsolat' ? 'active' : '' %>" href="<%= basePath %>/kapcsolat">Kapcsolat</a>
 
-                    <% if (user && user.role==='admin' ) { %>
-                        <a class="<%= title.includes('CRUD') ? 'active' : '' %>"
-                            href="<%= basePath %>/crud/pilotak">CRUD</a>
-                        <a class="<%= title.includes('Üzenetek') ? 'active' : '' %>"
-                            href="<%= basePath %>/admin/uzenetek">Üzenetek</a>
-                        <% } %>
+                    <% if (user && user.role === 'admin') { %>
+                        <a class="<%= title === 'Pilóták CRUD' ? 'active' : '' %>" href="<%= basePath %>/crud/pilotak">CRUD</a>
+                        <a class="<%= title === 'Üzenetek' ? 'active' : '' %>" href="<%= basePath %>/admin/uzenetek">Üzenetek</a>
+                    <% } %>
                 </div>
 
-                <!-- JOBB OLDALI USER MENÜ -->
+                <!-- JOBB OLDAL -->
                 <div class="navbar-right">
                     <% if (user) { %>
                         <span class="user-text">👤 <%= user.username %></span>
                         <a class="button small" href="<%= basePath %>/auth/logout">Kijelentkezés</a>
-                        <% } else { %>
-                            <a class="button small" href="<%= basePath %>/auth/login">Bejelentkezés</a>
-                            <a class="button small primary" href="<%= basePath %>/auth/register">Regisztráció</a>
-                            <% } %>
+                    <% } else { %>
+                        <a class="button small" href="<%= basePath %>/auth/login">Bejelentkezés</a>
+                        <a class="button small primary" href="<%= basePath %>/auth/register">Regisztráció</a>
+                    <% } %>
                 </div>
 
             </div>
@@ -59,7 +51,7 @@
         <!-- TARTALOM -->
         <section id="wrapper" style="padding-top: 120px;">
             <div class="inner">
-                <%- body %>
+                <%- body || '' %>
             </div>
         </section>
 
@@ -80,7 +72,5 @@
     <script src="<%= basePath %>/assets/js/util.js"></script>
     <script src="<%= basePath %>/assets/js/main.js"></script>
 
-
 </body>
-
 </html>

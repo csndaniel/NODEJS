@@ -2,27 +2,63 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// Piloták listája
+// -----------------------------------------------------
+// PILÓTÁK LISTÁJA
+// -----------------------------------------------------
 router.get('/pilotak', (req, res) => {
-    db.query("SELECT * FROM pilotak", (err, results) => {
-        if (err) throw err;
-        res.render('adatbazis/pilotak', { title: 'Pilóták', pilotak: results });
+    const base = req.app.locals.basePath;
+
+    db.query("SELECT * FROM pilotak ORDER BY id ASC", (err, results) => {
+        if (err) {
+            console.error(err);
+            req.flash('error_msg', 'Nem sikerült betölteni a pilótákat.');
+            return res.redirect(base + '/');
+        }
+
+        res.render('adatbazis/pilotak', { 
+            title: 'Pilóták',
+            pilotak: results
+        });
     });
 });
 
-// Pályák listája
+// -----------------------------------------------------
+// PÁLYÁK LISTÁJA
+// -----------------------------------------------------
 router.get('/palyak', (req, res) => {
-    db.query("SELECT * FROM palyak", (err, results) => {
-        if (err) throw err;
-        res.render('adatbazis/palyak', { title: 'Pályák', palyak: results });
+    const base = req.app.locals.basePath;
+
+    db.query("SELECT * FROM palyak ORDER BY id ASC", (err, results) => {
+        if (err) {
+            console.error(err);
+            req.flash('error_msg', 'Nem sikerült betölteni a pályákat.');
+            return res.redirect(base + '/');
+        }
+
+        res.render('adatbazis/palyak', { 
+            title: 'Pályák',
+            palyak: results
+        });
     });
 });
 
-// Versenyek listája
+// -----------------------------------------------------
+// VERSENYEK LISTÁJA
+// -----------------------------------------------------
 router.get('/versenyek', (req, res) => {
-    db.query("SELECT * FROM versenyek", (err, results) => {
-        if (err) throw err;
-        res.render('adatbazis/versenyek', { title: 'Versenyek', versenyek: results });
+    const base = req.app.locals.basePath;
+
+    db.query("SELECT * FROM versenyek ORDER BY datum DESC", (err, results) => {
+        if (err) {
+            console.error(err);
+            req.flash('error_msg', 'Nem sikerült betölteni a versenyeket.');
+            return res.redirect(base + '/');
+        }
+
+        res.render('adatbazis/versenyek', { 
+            title: 'Versenyek',
+            versenyek: results
+        });
     });
 });
 

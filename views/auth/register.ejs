@@ -1,21 +1,18 @@
-<%- include('../layout', {
-  title: 'Regisztráció',
-  body: `
-    <div class="auth-container">
-      <h2>Regisztráció</h2>
+<%- include('../layout', { title: 'Regisztráció' }) %>
 
-      <form action="/auth/register" method="POST">
-          <label>Felhasználónév</label>
-          <input type="text" name="username" required>
+<div class="auth-container">
+    <h2>Regisztráció</h2>
 
-          <label>Email</label>
-          <input type="email" name="email" required>
+    <form action="<%= basePath %>/auth/register" method="POST">
+        <label>Felhasználónév</label>
+        <input type="text" name="username" required>
 
-          <label>Jelszó</label>
-          <input type="password" name="password" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
 
-          <button type="submit">Regisztráció</button>
-      </form>
-    </div>
-  `
-}) %>
+        <label>Jelszó</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Regisztráció</button>
+    </form>
+</div>

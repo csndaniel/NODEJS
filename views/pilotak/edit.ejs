@@ -1,26 +1,23 @@
-<%- include('../layout', {
-  title: 'Pilóta szerkesztése',
-  body: `
-    <h2>Pilóta szerkesztése</h2>
+<%- include('../layout', { title: 'Pilóta szerkesztése' }) %>
 
-    <form action="/crud/pilotak/szerkesztes/${pilota.id}" method="POST">
+<h2>Pilóta szerkesztése</h2>
 
-      <label>Név</label>
-      <input type="text" name="nev" value="${pilota.nev}" required>
+<form action="<%= basePath %>/crud/pilotak/szerkesztes/<%= pilota.id %>" method="POST">
 
-      <label>Születési idő</label>
-      <input type="date" name="szuletesi_ido" value="${pilota.szuletesi_ido.toISOString().split('T')[0]}" required>
+  <label>Név</label>
+  <input type="text" name="nev" value="<%= pilota.nev %>" required>
 
-      <label>Futamgyőzelmek</label>
-      <input type="number" name="futamgyozelmek" value="${pilota.futamgyozelmek}" required>
+  <label>Születési idő</label>
+  <input type="date" name="szuletesi_ido" value="<%= pilota.szuletesi_ido.toString().slice(0,10) %>" required>
 
-      <label>Pontszám</label>
-      <input type="number" name="pontszam" value="${pilota.pontszam}" required>
+  <label>Futamgyőzelmek</label>
+  <input type="number" name="futamgyozelmek" value="<%= pilota.futamgyozelmek %>" required>
 
-      <label>Pole pozíciók</label>
-      <input type="number" name="pole_poziciok" value="${pilota.pole_poziciok}" required>
+  <label>Pontszám</label>
+  <input type="number" name="pontszam" value="<%= pilota.pontszam %>" required>
 
-      <button type="submit">Módosítás</button>
-    </form>
-  `
-}) %>
+  <label>Pole pozíciók</label>
+  <input type="number" name="pole_poziciok" value="<%= pilota.pole_poziciok %>" required>
+
+  <button type="submit">Módosítás</button>
+</form>
