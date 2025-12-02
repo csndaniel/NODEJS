@@ -3,35 +3,34 @@
   body: `
     <h2>Pilóták</h2>
 
-    <a href="/crud/pilotak/uj">Új pilóta hozzáadása</a>
+    <a class="button small primary" href="${basePath}/crud/pilotak/uj">Új pilóta hozzáadása</a>
 
     <table class="alt">
-  <thead>
-    <tr>
-      <th>Név</th>
-      <th>Születési idő</th>
-      <th>Győzelmek</th>
-      <th>Pontszám</th>
-      <th>Pole</th>
-      <th>Művelet</th>
-    </tr>
-  </thead>
-  <tbody>
-    ${pilotak.map(p => `
-      <tr>
-        <td>${p.nev}</td>
-        <td>${p.szuletesi_ido.toISOString().split('T')[0]}</td>
-        <td>${p.futamgyozelmek}</td>
-        <td>${p.pontszam}</td>
-        <td>${p.pole_poziciok}</td>
-        <td>
-          <a class="button small" href="/crud/pilotak/szerkesztes/${p.id}">Szerkesztés</a>
-          <a class="button small" href="/crud/pilotak/torles/${p.id}">Törlés</a>
-        </td>
-      </tr>
-    `).join('')}
-  </tbody>
-</table>
-
+      <thead>
+        <tr>
+          <th>Név</th>
+          <th>Születési idő</th>
+          <th>Győzelmek</th>
+          <th>Pontszám</th>
+          <th>Pole</th>
+          <th>Művelet</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${pilotak.map(p => `
+          <tr>
+            <td>${p.nev}</td>
+            <td>${p.szuletesi_ido.toISOString().split('T')[0]}</td>
+            <td>${p.futamgyozelmek}</td>
+            <td>${p.pontszam}</td>
+            <td>${p.pole_poziciok}</td>
+            <td>
+              <a class="button small" href="${basePath}/crud/pilotak/szerkesztes/${p.id}">Szerkesztés</a>
+              <a class="button small" href="${basePath}/crud/pilotak/torles/${p.id}">Törlés</a>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
   `
 }) %>

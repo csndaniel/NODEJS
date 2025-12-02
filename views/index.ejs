@@ -1,42 +1,45 @@
-<%- include('layout', { title: 'Főoldal' }) %>
+<%- include('layout', { 
+  title: 'Főoldal', 
+  body: `
+    <div class="homepage-wrapper">
 
-<div class="homepage-wrapper">
+      <div class="intro-box">
+        <h3>Bemutatkozás</h3>
 
-  <div class="intro-box">
-    <h3>Bemutatkozás</h3>
-
-    <p>
-      Ezt a weboldalt a <strong>Web-programozás II.</strong> tantárgy labor óráira készítettük.
-      A témaválasztás egyszerű volt: szeretjük a technikai sportokat, különösen a Formula 1-et.
-      Mivel még tart a '25-ös szezon, így a 2024 eredményei találhatóak meg az oldalon, melyek egy adatbázisból kerültek lekérdezésre.
-      Ezeket az adatokat az Admin felhasználónak van jogosultsága kezelni. (CRUD és Admin oldal összevonva)
-    </p>
-  </div>
-
-  <h2 class="section-title">Kedvenc, jelenleg aktív pilótáink...</h2>
-
-  <div class="gallery-row">
-
-    <div class="gallery-card">
-      <img src="<%= basePath %>/images/web_ea_kep1.jpg" alt="verstappen">
-      <div class="hover-text">"Send them my regards..."</div>
-      <div class="caption">Max Verstappen - 4-szeres világbajnok</div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="<%= basePath %>/images/fernando-alonso-f1.png" alt="alonso">
-      <div class="hover-text">"No more radio for the rest of the race"</div>
-      <div class="caption">Fernando Alonso - 2-szeres világbajnok</div>
-    </div>
-
-    <div class="gallery-card">
-      <img src="<%= basePath %>/images/banan_leclerc.jpg" alt="leclerc">
-      <div class="hover-text">
-        "I have my seat... Full of water! <br> Must be the water..."
+        <p>
+          Ezt a weboldalt a <strong>Web-programozás II.</strong> tantárgy labor óráira készítettük.
+          A témaválasztás egyszerű volt: szeretjük a technikai sportokat, különösen a Formula 1-et.
+          Mivel még tart a '25-ös szezon, így a 2024 eredményei találhatóak meg az oldalon, melyek egy adatbázisból kerültek lekérdezésre.
+          Ezeket az adatokat az Admin felhasználónak van jogosultsága kezelni. (CRUD és Admin oldal összevonva)
+        </p>
       </div>
-      <div class="caption">Charles Leclerc - 8-szoros futamgyőztes</div>
+
+      <h2 class="section-title">Kedvenc, jelenleg aktív pilótáink...</h2>
+
+      <div class="gallery-row">
+
+        <div class="gallery-card">
+          <img src="${basePath}/images/web_ea_kep1.jpg" alt="verstappen">
+          <div class="hover-text">"Send them my regards..."</div>
+          <div class="caption">Max Verstappen - 4-szeres világbajnok</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="${basePath}/images/fernando-alonso-f1.png" alt="alonso">
+          <div class="hover-text">"No more radio for the rest of the race"</div>
+          <div class="caption">Fernando Alonso - 2-szeres világbajnok</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="${basePath}/images/banan_leclerc.jpg" alt="leclerc">
+          <div class="hover-text">
+            "I have my seat... Full of water! <br> Must be the water..."
+          </div>
+          <div class="caption">Charles Leclerc - 8-szoros futamgyőztes</div>
+        </div>
+
+      </div>
+
     </div>
-
-  </div>
-
-</div>
+  `
+}) %>

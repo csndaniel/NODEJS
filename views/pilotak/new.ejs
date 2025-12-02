@@ -1,23 +1,26 @@
-<%- include('../layout', { title: 'Új pilóta' }) %>
+<%- include('../layout', {
+  title: 'Új pilóta',
+  body: `
+    <h2>Új pilóta felvétele</h2>
 
-<h2>Új pilóta felvétele</h2>
+    <form action="${basePath}/crud/pilotak/uj" method="POST">
 
-<form action="<%= basePath %>/crud/pilotak/uj" method="POST">
+        <label>Név</label>
+        <input type="text" name="nev" required>
 
-    <label>Név</label>
-    <input type="text" name="nev" required>
+        <label>Születési idő</label>
+        <input type="date" name="szuletesi_ido" required>
 
-    <label>Születési idő</label>
-    <input type="date" name="szuletesi_ido" required>
+        <label>Futamgyőzelmek</label>
+        <input type="number" name="futamgyozelmek" required>
 
-    <label>Futamgyőzelmek</label>
-    <input type="number" name="futamgyozelmek" required>
+        <label>Pontszám</label>
+        <input type="number" name="pontszam" required>
 
-    <label>Pontszám</label>
-    <input type="number" name="pontszam" required>
+        <label>Pole pozíciók</label>
+        <input type="number" name="pole_poziciok" required>
 
-    <label>Pole pozíciók</label>
-    <input type="number" name="pole_poziciok" required>
-
-    <button type="submit">Mentés</button>
-</form>
+        <button type="submit">Mentés</button>
+    </form>
+  `
+}) %>

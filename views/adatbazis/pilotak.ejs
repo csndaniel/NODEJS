@@ -1,23 +1,26 @@
-<%- include('../layout', { title: 'Pilóták' }) %>
+<%- include('../layout', {
+  title: 'Pilóták',
+  body: `
+    <h2>Pilóták listája</h2>
 
-<h2>Pilóták listája</h2>
+    <table class="alt">
+      <tr>
+        <th>Név</th>
+        <th>Születési idő</th>
+        <th>Futamgyőzelmek</th>
+        <th>Pontszám</th>
+        <th>Pole pozíciók</th>
+      </tr>
 
-<table border="1" cellpadding="10">
-  <tr>
-    <th>Név</th>
-    <th>Születési idő</th>
-    <th>Futamgyőzelmek</th>
-    <th>Pontszám</th>
-    <th>Pole pozíciók</th>
-  </tr>
-
-  <% pilotak.forEach(p => { %>
-    <tr>
-      <td><%= p.nev %></td>
-      <td><%= p.szuletesi_ido ? p.szuletesi_ido.toString().slice(0, 10) : '' %></td>
-      <td><%= p.futamgyozelmek %></td>
-      <td><%= p.pontszam %></td>
-      <td><%= p.pole_poziciok %></td>
-    </tr>
-  <% }) %>
-</table>
+      ${pilotak.map(p => `
+        <tr>
+          <td>${p.nev}</td>
+          <td>${p.szuletesi_ido.toISOString().split('T')[0]}</td>
+          <td>${p.futamgyozelmek}</td>
+          <td>${p.pontszam}</td>
+          <td>${p.pole_poziciok}</td>
+        </tr>
+      `).join('')}
+    </table>
+  `
+}) %>
